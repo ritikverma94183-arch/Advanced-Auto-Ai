@@ -5,7 +5,6 @@ import pandas as pd
 from ml_engine import train_and_predict
 from fpdf import FPDF
 import os
-
 st.set_page_config(page_title="Advanced Car System", page_icon="🏎️", layout="wide")
 
 # 🔥 ADVANCED FORCE ANIMATION, BOLD TEXT & FULL-SCREEN WALLPAPER INJECTOR
@@ -64,6 +63,13 @@ def inject_animations():
     </style>
     """
     st.markdown(css_animations, unsafe_allow_html=True)
+
+    #Injecting a full-screen split wallpaper with a dark overlay for better text visibility
+    st.markdown("<div style='position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -9999; display: flex;'>"
+                    "<div style=\"flex: 1; background: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1920') center/cover no-repeat;\"></div>"
+                    "<div style=\"flex: 1; background: url('https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=1920') center/cover no-repeat;\"></div>"
+                    "<div style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85);'></div>"
+                "</div>", unsafe_allow_html=True)
     
     # 🔥 FULL SCREEN SPLIT WALLPAPER (Fixed format)
     full_bg_html = (
@@ -73,11 +79,12 @@ def inject_animations():
         "<div style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85);'></div>"
         "</div>"
     )
-    st.markdown(full_bg_html, unsafe_allow_html=True)
+    # Place wallpaper HTML using components.html (fixed-position background + overlay)
+    st.components.v1.html(full_bg_html, height=1)
 
 
 # --- PDF Generation Function ---
-def generate_pdf(car_nm, year, km, fuel, trans, cond, price, battery_kwh: int = 0):
+def generate_pdf(car_nm, year, km, fuel, trans, cond, price, battery_kwh: int = 0, state: str = "", city: str = ""):
     pdf = FPDF()
     pdf.add_page()
     pdf.set_fill_color(245, 245, 245)
@@ -98,6 +105,11 @@ def generate_pdf(car_nm, year, km, fuel, trans, cond, price, battery_kwh: int = 
     pdf.cell(0, 8, f"Fuel: {fuel}", ln=True)
     pdf.cell(100, 8, f"Transmission: {trans}")
     pdf.cell(0, 8, f"Condition: {cond}", ln=True)
+
+    if state:
+        pdf.cell(100, 8, f"State: {state}")
+    if city:
+        pdf.cell(0, 8, f"City: {city}", ln=True)
 
     if isinstance(battery_kwh, (int, float)) and battery_kwh > 0:
         pdf.ln(2)
@@ -132,6 +144,7 @@ def show_ai_price_predictions():
 
     def_fuel, def_trans = "Petrol", "Manual"
     def_cc, def_bhp, def_speed, def_battery = 1500, 100, 180, 0
+    def_state, def_city = "", ""
 
     if not df_cars.empty:
         car_data = df_cars[df_cars['Car_Name'] == car_nm]
@@ -144,6 +157,12 @@ def show_ai_price_predictions():
             if 'Battery_Capacity_kWh' in car_data.columns:
                 try: def_battery = int(car_data['Battery_Capacity_kWh'].iloc[0])
                 except Exception: def_battery = 0
+            if 'State' in car_data.columns:
+                try: def_state = str(car_data['State'].iloc[0])
+                except Exception: def_state = ""
+            if 'City' in car_data.columns:
+                try: def_city = str(car_data['City'].iloc[0])
+                except Exception: def_city = ""
 
     with st.form("prediction_form"):
         st.markdown("#### ⚡ Fixed Engine & Performance Specs")
@@ -167,18 +186,89 @@ def show_ai_price_predictions():
         condition = col4.selectbox("Overall Condition", ["Mint (Like New)", "Good", "Fair", "Needs Work"], index=1)
         user_price = col5.number_input("Your Expected Price (₹)", 0, 50000000, 0, step=50000)
 
+        # Location inputs: State (dropdown) + City (dropdown mapped to State)
+        st.markdown("#### 📍 Location (State / City)")
+        states = [
+            "Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana",
+            "Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya",
+            "Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura",
+            "Uttar Pradesh","Uttarakhand","West Bengal"
+        ]
+
+        # City mapping: ~4 major cities per state to reach >100 cities total
+        cities_map = {
+            "Andhra Pradesh": ["Visakhapatnam","Vijayawada","Guntur","Tirupati"],
+            "Arunachal Pradesh": ["Itanagar","Tezu","Pasighat","Naharlagun"],
+            "Assam": ["Guwahati","Dibrugarh","Jorhat","Silchar"],
+            "Bihar": ["Patna","Gaya","Bhagalpur","Muzaffarpur"],
+            "Chhattisgarh": ["Raipur","Bilaspur","Durg","Korba"],
+            "Goa": ["Panaji","Margao","Vasco da Gama","Mapusa"],
+            "Gujarat": ["Ahmedabad","Surat","Vadodara","Rajkot"],
+            "Haryana": ["Chandigarh","Gurugram","Faridabad","Panipat"],
+            "Himachal Pradesh": ["Shimla","Dharamshala","Solan","Mandi"],
+            "Jharkhand": ["Ranchi","Jamshedpur","Dhanbad","Bokaro"],
+            "Karnataka": ["Bengaluru","Mysore","Mangalore","Hubli"],
+            "Kerala": ["Thiruvananthapuram","Kochi","Kozhikode","Kollam"],
+            "Madhya Pradesh": ["Bhopal","Indore","Gwalior","Jabalpur"],
+            "Maharashtra": ["Mumbai","Pune","Nagpur","Nashik"],
+            "Manipur": ["Imphal","Moirang","Thoubal","Churachandpur"],
+            "Meghalaya": ["Shillong","Tura","Jowai","Nongpoh"],
+            "Mizoram": ["Aizawl","Lunglei","Champhai","Kolasib"],
+            "Nagaland": ["Kohima","Dimapur","Mokokchung","Tuensang"],
+            "Odisha": ["Bhubaneswar","Cuttack","Rourkela","Sambalpur"],
+            "Punjab": ["Ludhiana","Amritsar","Jalandhar","Patiala"],
+            "Rajasthan": ["Jaipur","Jodhpur","Udaipur","Kota"],
+            "Sikkim": ["Gangtok","Namchi","Mangan","Gyalshing"],
+            "Tamil Nadu": ["Chennai","Coimbatore","Madurai","Tiruchirappalli"],
+            "Telangana": ["Hyderabad","Warangal","Karimnagar","Nizamabad"],
+            "Tripura": ["Agartala","Udaipur","Kailasahar","Belonia"],
+            "Uttar Pradesh": ["Lucknow","Kanpur","Varanasi","Noida"],
+            "Uttarakhand": ["Dehradun","Haridwar","Nainital","Haldwani"],
+            "West Bengal": ["Kolkata","Howrah","Siliguri","Durgapur"]
+        }
+
+        col6, col7 = st.columns([2,3])
+        state = col6.selectbox("State", options=states, index=states.index(def_state) if def_state in states else 0)
+
+        # Build a master city list (all cities across states) so the dropdown contains 100+ entries
+        all_cities = []
+        for st_name, clist in cities_map.items():
+            for c in clist:
+                # include state in display to help disambiguate (e.g., "Aurangabad (Maharashtra)")
+                all_cities.append(f"{c} ({st_name})")
+
+        # Ensure uniqueness and sort for stable ordering
+        all_cities = sorted(list(dict.fromkeys(all_cities)))
+
+        # Add an explicit (Any) option at top
+        city_options = ["(Any)"] + all_cities
+
+        # Determine default index if def_city provided (try matching name without state first)
+        default_city_index = 0
+        if def_city:
+            # Try exact match first
+            if def_city in city_options:
+                default_city_index = city_options.index(def_city)
+            else:
+                # Try matching "City (State)" format
+                possible = [opt for opt in city_options if opt.startswith(def_city + " (")]
+                if possible:
+                    default_city_index = city_options.index(possible[0])
+
+        city = col7.selectbox("City (optional)", options=city_options, index=default_city_index)
+
         submit = st.form_submit_button("Generate Professional Valuation", type="primary")
 
     if submit:
         with st.spinner("Calculating real-world market depreciation..."):
-            price = train_and_predict(car_nm, year, km, def_fuel, owner, def_trans, def_cc, def_bhp, def_speed, battery_kwh=def_battery)
+            price = train_and_predict(car_nm, year, km, def_fuel, owner, def_trans, def_cc, def_bhp, def_speed, battery_kwh=def_battery, state=state, city=city)
             cond_map = {"Mint (Like New)": 1.05, "Good": 1.0, "Fair": 0.85, "Needs Work": 0.65}
             price = int(price * cond_map.get(condition, 1.0))
 
             st.markdown("<div class='fade-in-up'>", unsafe_allow_html=True)
             st.success(f"🤖 Market Estimated Price: **₹{price:,.0f}**")
 
-            generate_pdf(car_nm, year, km, def_fuel, def_trans, condition, price, def_battery)
+            generate_pdf(car_nm, year, km, def_fuel, def_trans, condition, price, def_battery, state=state, city=city)
             with open("Valuation_Report.pdf", "rb") as pdf_file:
                 st.download_button(
                     label="📥 Download Valuation Certificate (PDF)",
@@ -195,7 +285,7 @@ def show_ai_price_predictions():
             st.markdown(f"<h3 class='sub-title' style='text-align:left;'>📉 Live Market Trend: {car_nm}</h3>", unsafe_allow_html=True)
             
             graph_years = list(range(2010, 2027))
-            graph_prices = [int(train_and_predict(car_nm, y, km, def_fuel, owner, def_trans, def_cc, def_bhp, def_speed, battery_kwh=def_battery) * cond_map.get(condition, 1.0)) for y in graph_years]
+            graph_prices = [int(train_and_predict(car_nm, y, km, def_fuel, owner, def_trans, def_cc, def_bhp, def_speed, battery_kwh=def_battery, state=state, city=city) * cond_map.get(condition, 1.0)) for y in graph_years]
 
             fig = go.Figure()
             fig.add_trace(go.Scatter(x=graph_years, y=graph_prices, mode='lines+markers', name='Market Value (₹)', line=dict(color='#00ffcc', width=4), marker=dict(size=8, color='white')))
