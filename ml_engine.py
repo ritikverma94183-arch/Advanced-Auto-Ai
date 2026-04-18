@@ -19,7 +19,7 @@ def get_brand_market_value(car_name):
     return 800000 # Default fallback
 
 # Main Prediction Engine
-def train_and_predict(car_name, year, km, fuel, owner, transmission, engine_cc=1500, power_bhp=100, top_speed=180, battery_kwh=0):
+def train_and_predict(car_name, year, km, fuel, owner, transmission, engine_cc=1500, power_bhp=100, top_speed=180, battery_kwh=0, state="", city=""):
     current_year = 2026 
     base_price = get_brand_market_value(car_name)
     
@@ -92,6 +92,38 @@ def train_and_predict(car_name, year, km, fuel, owner, transmission, engine_cc=1
         # Additional policy: older EVs (>8y) see steeper battery anxiety discounts
         if age >= 8:
             depreciated_price *= 0.85
+
+    # 6. Location/State & City adjustments (India-specific heuristics)
+    # The user requested per-location pricing sensitivity. We apply a conservative
+    # multiplier by state and a small city-level tweak for well-known metros.
+    try:
+        st = str(state).strip()
+    except Exception:
+        st = ""
+
+    # Basic buckets: metros (higher prices), standard (no change), lower-tier states (slight discount)
+    metros = {"Delhi", "Maharashtra", "Karnataka", "Tamil Nadu", "West Bengal", "Gujarat"}
+    lower_tier = {"Bihar", "Jharkhand", "Chhattisgarh", "Odisha", "Assam", "Nagaland", "Manipur", "Mizoram", "Tripura", "Meghalaya"}
+
+    state_factor = 1.0
+    if st in metros:
+        state_factor = 1.08
+    elif st in lower_tier:
+        state_factor = 0.93
+    else:
+        state_factor = 1.00
+
+    # City-level micro-adjustments for big metros when the city name contains known terms
+    city_factor = 1.0
+    try:
+        ct = str(city).lower()
+    except Exception:
+        ct = ""
+
+    if any(x in ct for x in ["mumbai", "bombay", "delhi", "bangalore", "bengaluru", "kolkata", "chennai", "gurgaon", "noida", "hyderabad"]):
+        city_factor = 1.02
+
+    depreciated_price = depreciated_price * state_factor * city_factor
 
     scrap_value = 50000 if base_price < 2000000 else 150000
 
