@@ -1,4 +1,4 @@
-Car_Name,Model_Year,Owner_Type,Kilometers_Driven,Fuel_Type,Transmission,Price_INR,Engine_Capacity_cc,Power_BHP,Top_Speed_kmph,Battery_Capacity_kWh
+Car_Name,Model_Year,Owner_Type,Kilometers_Driven,Fuel_Type,Transmission,Price_INR,Engine_Capacity_cc,Power_BHP,Top_Speed_kmph,Battery_Capacity_kWh,State,City
 Maruti Suzuki Swift,2024,First,8000,Petrol,Manual,750000,1197,89,160,0
 Hyundai Creta,2022,First,25000,Diesel,Automatic,1450000,1493,113,170,0
 Tata Nexon,2025,First,4000,Petrol,Automatic,1150000,1199,118,180,0
