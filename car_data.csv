@@ -1,0 +1,260 @@
+Car_Name,Model_Year,Owner_Type,Kilometers_Driven,Fuel_Type,Transmission,Price_INR,Engine_Capacity_cc,Power_BHP,Top_Speed_kmph,Battery_Capacity_kWh
+Maruti Suzuki Swift,2024,First,8000,Petrol,Manual,750000,1197,89,160,0
+Hyundai Creta,2022,First,25000,Diesel,Automatic,1450000,1493,113,170,0
+Tata Nexon,2025,First,4000,Petrol,Automatic,1150000,1199,118,180,0
+Toyota Fortuner,2021,Second,55000,Diesel,Automatic,3200000,2755,201,190,0
+Mahindra Thar,2023,First,18000,Diesel,Manual,1550000,2184,130,155,0
+Honda City,2018,Second,65000,Petrol,Manual,700000,1498,119,180,0
+Kia Seltos,2020,First,45000,Petrol,Automatic,1250000,1493,113,170,0
+Maruti Suzuki Baleno,2019,Second,58000,Petrol,Manual,600000,1197,89,160,0
+BMW 3 Series,2022,First,22000,Diesel,Automatic,4800000,1998,258,250,0
+Mercedes-Benz C-Class,2021,First,28000,Petrol,Automatic,5100000,1993,201,240,0
+Audi A6,2017,Second,72000,Diesel,Automatic,2200000,1984,241,250,0
+Volkswagen Polo,2016,Third,85000,Petrol,Manual,400000,999,109,180,0
+Skoda Octavia,2020,First,42000,Petrol,Automatic,1800000,1984,187,240,0
+Ford Endeavour,2019,Second,68000,Diesel,Automatic,2800000,1996,167,165,0
+Tata Harrier,2022,First,30000,Diesel,Manual,1750000,1956,167,180,0
+Hyundai i20,2024,First,12000,Petrol,Manual,850000,1197,82,160,0
+Mahindra XUV700,2023,First,15000,Diesel,Automatic,2100000,2198,182,195,0
+Toyota Innova Crysta,2018,Second,95000,Diesel,Manual,1650000,2393,148,175,0
+Honda Amaze,2021,First,35000,Petrol,Manual,700000,1199,88,160,0
+Renault Duster,2015,Third,110000,Diesel,Manual,450000,1498,104,165,0
+Jeep Compass,2019,Second,60000,Diesel,Automatic,1400000,1956,167,185,0
+MG Hector,2021,First,40000,Petrol,Automatic,1500000,1956,167,180,0
+Kia Sonet,2022,First,28000,Petrol,Automatic,1100000,1493,113,170,0
+Nissan Magnite,2023,First,18000,Petrol,Manual,750000,999,98,170,0
+Tata Punch,2024,First,9000,Petrol,Manual,680000,1199,86,150,0
+Maruti Suzuki WagonR,2014,Third,95000,CNG,Manual,300000,998,66,150,0
+Hyundai Venue,2021,First,38000,Petrol,Automatic,950000,998,118,180,0
+Skoda Kushaq,2022,First,25000,Petrol,Manual,1250000,999,113,180,0
+Volkswagen Taigun,2023,First,15000,Petrol,Automatic,1450000,999,113,180,0
+Mahindra Scorpio,2017,Second,85000,Diesel,Manual,900000,2179,130,165,0
+Tata Tiago,2020,Second,52000,Petrol,Manual,450000,1199,84,150,0
+Honda Civic,2019,Second,48000,Petrol,Automatic,1550000,1799,139,200,0
+Toyota Glanza,2022,First,22000,Petrol,Automatic,800000,1197,89,160,0
+Ford EcoSport,2018,Second,65000,Diesel,Manual,650000,1498,99,170,0
+BMW X5,2021,First,32000,Diesel,Automatic,6800000,2998,335,243,0
+Audi Q7,2019,Second,55000,Diesel,Automatic,4500000,2995,335,250,0
+Mercedes-Benz E-Class,2023,First,14000,Diesel,Automatic,7500000,1950,191,240,0
+Porsche Macan,2022,First,20000,Petrol,Automatic,8500000,1984,261,232,0
+Volvo XC90,2020,First,45000,Diesel,Automatic,6500000,1969,300,230,0
+Land Rover Defender,2024,First,8000,Petrol,Automatic,9800000,1997,296,191,0
+Tata Safari,2023,First,19000,Diesel,Automatic,2200000,1956,167,180,0
+Hyundai Verna,2024,First,10000,Petrol,Automatic,1450000,1497,113,190,0
+Maruti Suzuki Dzire,2018,Second,75000,Diesel,Manual,550000,1197,89,160,0
+Kia Carens,2023,First,21000,Diesel,Manual,1500000,1493,113,170,0
+MG ZS EV,2022,First,28000,Electric,Automatic,2100000,0,174,140,50.3
+Tata Nexon EV,2023,First,15000,Electric,Automatic,1450000,0,127,120,40.5
+Kia EV6,2024,First,5000,Electric,Automatic,6200000,0,320,192,77.4
+Hyundai Ioniq 5,2023,First,12000,Electric,Automatic,4500000,0,214,185,72.6
+Mahindra XUV300,2021,First,35000,Petrol,Manual,950000,1197,108,175,0
+Maruti Suzuki Alto,2012,Fourth,120000,Petrol,Manual,150000,796,47,140,0
+Honda WR-V,2019,Second,58000,Diesel,Manual,700000,1498,98,165,0
+Renault Kwid,2020,First,45000,Petrol,Manual,350000,999,67,150,0
+Datsun redi-GO,2018,Second,65000,Petrol,Manual,250000,799,53,140,0
+Nissan Sunny,2015,Third,95000,Diesel,Manual,350000,1461,84,160,0
+Volkswagen Vento,2017,Second,82000,Diesel,Automatic,550000,1498,108,180,0
+Skoda Superb,2021,First,38000,Petrol,Automatic,2800000,1984,187,239,0
+Toyota Corolla Altis,2019,Second,55000,Petrol,Manual,1400000,1798,138,190,0
+Honda CR-V,2018,Second,68000,Petrol,Automatic,1800000,1997,152,190,0
+Jeep Wrangler,2022,First,24000,Petrol,Automatic,6200000,1998,268,180,0
+BMW X1,2023,First,16000,Petrol,Automatic,4200000,1499,134,208,0
+Audi Q3,2022,First,26000,Petrol,Automatic,3800000,1984,187,220,0
+Mercedes-Benz GLC,2021,First,34000,Diesel,Automatic,5200000,1993,194,215,0
+Jaguar F-Pace,2020,Second,48000,Diesel,Automatic,4500000,1997,246,217,0
+Volvo XC40,2023,First,12000,Petrol,Automatic,4400000,1969,190,210,0
+Porsche Cayenne,2021,First,28000,Petrol,Automatic,11500000,2995,335,245,0
+Land Rover Discovery,2019,Second,62000,Diesel,Automatic,6500000,1997,296,201,0
+Lexus NX,2022,First,21000,Electric,Automatic,5800000,2487,194,200,18.1
+Mini Cooper S,2021,First,18000,Petrol,Automatic,3800000,1998,189,235,0
+Maruti Suzuki Swift,2005,Fourth,180000,Petrol,Manual,90000,1197,89,160,0
+Hyundai Santro,2002,Fourth,210000,CNG,Manual,60000,1086,62,140,0
+Tata Indica,1998,Fourth,320000,Diesel,Manual,40000,1405,53,130,0
+Maruti 800,1996,Fourth,280000,Petrol,Manual,45000,796,37,130,0
+Honda City,2008,Third,150000,Petrol,Manual,250000,1497,117,180,0
+Toyota Innova,2006,Third,240000,Diesel,Manual,450000,2494,100,150,0
+Mahindra Scorpio,2009,Third,170000,Diesel,Manual,380000,2609,115,150,0
+Ford Ikon,2004,Fourth,190000,Petrol,Manual,80000,1299,69,150,0
+Hyundai Accent,2007,Third,160000,CNG,Manual,120000,1495,93,165,0
+Maruti Suzuki Zen,2003,Fourth,200000,Petrol,Manual,75000,993,60,140,0
+Chevrolet Spark,2010,Third,110000,Petrol,Manual,150000,995,62,145,0
+Fiat Punto,2012,Second,100000,Diesel,Manual,200000,1248,75,155,0
+Volkswagen Polo,2011,Third,130000,Petrol,Manual,280000,1198,74,165,0
+Skoda Laura,2010,Third,140000,Diesel,Automatic,300000,1968,138,200,0
+BMW 3 Series,2008,Third,160000,Petrol,Automatic,550000,1995,177,230,0
+Mercedes-Benz E-Class,2007,Third,180000,Diesel,Automatic,600000,2987,231,245,0
+Audi A4,2011,Second,120000,Diesel,Automatic,800000,1968,141,215,0
+Toyota Corolla,2005,Fourth,220000,Petrol,Manual,200000,1794,125,185,0
+Maruti Suzuki Swift,2026,First,250,Petrol,Manual,850000,1197,89,160,0
+Hyundai Creta,2026,First,150,Diesel,Automatic,1800000,1493,113,170,0
+Tata Nexon,2026,First,300,Petrol,Automatic,1400000,1199,118,180,0
+Mahindra Thar,2026,First,400,Diesel,Manual,1850000,2184,130,155,0
+Toyota Fortuner,2026,First,100,Diesel,Automatic,4500000,2755,201,190,0
+BMW X5,2026,First,50,Diesel,Automatic,9500000,2998,335,243,0
+Mercedes-Benz GLE,2026,First,120,Diesel,Automatic,10500000,1950,241,225,0
+Audi Q7,2026,First,80,Petrol,Automatic,9200000,2995,335,250,0
+Porsche 911,2026,First,20,Petrol,Automatic,18500000,2981,379,293,0
+Land Rover Range Rover,2026,First,30,Diesel,Automatic,25000000,2996,394,242,0
+Kia EV6,2026,First,150,Electric,Automatic,6500000,0,320,192,77.4
+Hyundai Ioniq 5,2026,First,200,Electric,Automatic,4800000,0,214,185,72.6
+Tata Safari,2026,First,250,Diesel,Automatic,2600000,1956,167,180,0
+Mahindra XUV700,2026,First,180,Diesel,Automatic,2400000,2198,182,195,0
+Honda City,2026,First,350,Petrol,Automatic,1650000,1498,119,180,0
+Maruti Suzuki Baleno,2026,First,400,Petrol,Manual,950000,1197,89,160,0
+Skoda Slavia,2026,First,280,Petrol,Automatic,1750000,999,113,190,0
+Volkswagen Virtus,2026,First,320,Petrol,Automatic,1850000,999,113,190,0
+Jeep Meridian,2026,First,150,Diesel,Automatic,3500000,1956,167,198,0
+Toyota Camry,2026,First,100,Electric,Automatic,4800000,2487,215,210,1.6
+Volvo XC90,2026,First,80,Electric,Automatic,9800000,1969,300,230,18.8
+Jaguar F-Type,2026,First,50,Petrol,Automatic,14500000,1997,296,250,0
+Lexus RX,2026,First,120,Electric,Automatic,11500000,2487,246,200,1.8
+MG Astor,2026,First,250,Petrol,Automatic,1800000,1498,108,175,0
+Kia Seltos,2026,First,300,Petrol,Automatic,1950000,1493,113,170,0
+Nissan Magnite,2026,First,450,Petrol,Automatic,1050000,999,98,170,0
+Renault Kiger,2026,First,500,Petrol,Manual,950000,999,98,170,0
+Ford Endeavour,2021,First,45000,Diesel,Automatic,3400000,1996,167,165,0
+Maruti Suzuki Ciaz,2019,Second,65000,Petrol,Manual,650000,1462,103,190,0
+Hyundai Elantra,2018,Second,70000,Petrol,Automatic,1100000,1999,150,200,0
+Tata Hexa,2017,Second,85000,Diesel,Manual,950000,2179,154,175,0
+Mahindra TUV300,2016,Third,110000,Diesel,Manual,550000,1493,100,160,0
+Toyota Yaris,2019,Second,55000,Petrol,Automatic,850000,1496,105,175,0
+Honda BR-V,2017,Second,80000,Petrol,Manual,650000,1497,117,165,0
+Chevrolet Cruze,2015,Third,105000,Diesel,Manual,400000,1998,163,200,0
+Fiat Linea,2014,Third,115000,Diesel,Manual,300000,1368,88,165,0
+Nissan Kicks,2020,First,52000,Petrol,Manual,850000,1498,104,175,0
+Renault Captur,2018,Second,75000,Diesel,Manual,600000,1498,104,170,0
+Skoda Rapid,2019,Second,68000,Diesel,Manual,750000,1498,103,185,0
+Volkswagen Ameo,2017,Second,82000,Diesel,Automatic,500000,1498,108,180,0
+Jeep Compass,2021,First,35000,Diesel,Automatic,1850000,1956,167,185,0
+MG Gloster,2022,First,28000,Diesel,Automatic,3200000,1996,158,180,0
+Kia Carnival,2021,First,42000,Diesel,Automatic,2800000,2199,197,190,0
+BMW 5 Series,2019,Second,55000,Diesel,Automatic,4200000,1995,190,235,0
+Mercedes-Benz GLA,2020,First,45000,Petrol,Automatic,3500000,1332,161,210,0
+Audi Q5,2018,Second,70000,Diesel,Automatic,3200000,1984,249,237,0
+Volvo S60,2021,First,32000,Petrol,Automatic,4100000,1969,190,220,0
+Land Rover Evoque,2019,Second,58000,Diesel,Automatic,4600000,1997,246,221,0
+Porsche Panamera,2020,First,38000,Petrol,Automatic,12500000,2894,325,270,0
+Jaguar XE,2018,Second,65000,Diesel,Automatic,3100000,1997,246,250,0
+Lexus ES,2021,First,25000,Electric,Automatic,5800000,2487,214,210,1.6
+Mini Countryman,2020,First,35000,Petrol,Automatic,3600000,1998,189,225,0
+Maruti Suzuki Ertiga,2022,First,32000,CNG,Manual,1050000,1462,101,170,0
+Hyundai Aura,2021,First,40000,Petrol,Manual,700000,1197,82,165,0
+Tata Altroz,2023,First,15000,Petrol,Manual,820000,1199,85,160,0
+Mahindra Bolero,2020,First,65000,Diesel,Manual,850000,1493,75,130,0
+Toyota Urban Cruiser,2021,First,38000,Petrol,Manual,950000,1462,103,165,0
+Honda Jazz,2019,Second,52000,Petrol,Automatic,650000,1199,88,160,0
+Kia Sonet,2023,First,18000,Diesel,Automatic,1350000,1493,113,170,0
+Maruti Suzuki S-Cross,2018,Second,75000,Diesel,Manual,650000,1248,88,160,0
+Hyundai Tucson,2022,First,26000,Diesel,Automatic,2500000,1995,182,201,0
+Tata Tigor,2021,First,42000,Petrol,Automatic,680000,1199,84,150,0
+Maruti Suzuki Celerio,2020,First,50000,Petrol,Manual,480000,998,66,150,0
+Mahindra Marazzo,2019,Second,70000,Diesel,Manual,950000,1497,121,165,0
+Datsun GO,2017,Second,80000,Petrol,Manual,300000,1198,67,150,0
+Nissan Terrano,2016,Third,105000,Diesel,Manual,450000,1461,84,160,0
+Renault Triber,2022,First,28000,Petrol,Manual,650000,999,71,140,0
+Volkswagen Jetta,2015,Third,115000,Diesel,Manual,480000,1968,138,200,0
+Skoda Yeti,2014,Third,125000,Diesel,Manual,400000,1968,138,190,0
+Ford Figo,2018,Second,68000,Diesel,Manual,450000,1498,99,170,0
+Chevrolet Beat,2013,Fourth,135000,Diesel,Manual,200000,936,56,140,0
+Fiat Avventura,2016,Third,95000,Diesel,Manual,350000,1248,91,165,0
+BMW 7 Series,2020,First,40000,Diesel,Automatic,9500000,2998,335,250,0
+Mercedes-Benz S-Class,2021,First,25000,Diesel,Automatic,12500000,2925,282,250,0
+Audi A8,2019,Second,50000,Petrol,Automatic,8500000,2995,335,250,0
+Volvo XC60,2022,First,22000,Petrol,Automatic,5500000,1969,250,220,0
+Land Rover Discovery Sport,2020,First,45000,Diesel,Automatic,5200000,1997,246,210,0
+Jaguar XF,2017,Second,75000,Diesel,Automatic,2800000,1997,246,240,0
+Porsche 718 Boxster,2021,First,15000,Petrol,Automatic,11000000,1988,295,275,0
+Maruti Suzuki Ignis,2020,First,45000,Petrol,Manual,550000,1197,81,160,0
+Hyundai Xcent,2018,Second,80000,Petrol,Manual,450000,1197,81,160,0
+Tata Zest,2017,Second,90000,Diesel,Manual,350000,1248,88,155,0
+Mahindra KUV100,2019,Second,65000,Petrol,Manual,420000,1198,82,150,0
+Honda Brio,2016,Third,85000,Petrol,Manual,320000,1198,87,160,0
+Toyota Etios,2015,Third,120000,Diesel,Manual,380000,1364,67,155,0
+Maruti Suzuki Omni,2014,Fourth,140000,CNG,Manual,180000,796,34,110,0
+Hyundai Eon,2015,Third,100000,Petrol,Manual,220000,814,55,135,0
+Tata Nano,2016,Third,60000,Petrol,Manual,150000,624,37,105,0
+Chevrolet Sail,2014,Third,110000,Diesel,Manual,250000,1248,74,150,0
+Ford Fiesta,2013,Fourth,130000,Diesel,Manual,280000,1498,89,165,0
+Maruti Suzuki Esteem,2001,Fourth,240000,Petrol,Manual,65000,1298,85,160,0
+Hyundai Sonata,2005,Fourth,210000,Petrol,Manual,150000,2359,137,190,0
+Tata Sierra,1999,Fourth,290000,Diesel,Manual,95000,1948,68,130,0
+Mahindra Armada,1997,Fourth,350000,Diesel,Manual,80000,2498,72,120,0
+Maruti Suzuki Gypsy,2004,Third,180000,Petrol,Manual,250000,1298,80,140,0
+Toyota Qualis,2003,Fourth,380000,Diesel,Manual,280000,2446,74,130,0
+Honda Accord,2008,Third,160000,Petrol,Automatic,350000,2354,142,205,0
+Skoda Fabia,2010,Third,130000,Petrol,Manual,200000,1198,75,160,0
+Volkswagen Passat,2012,Second,120000,Diesel,Automatic,550000,1968,168,220,0
+BMW X3,2015,Second,105000,Diesel,Automatic,1650000,1995,190,210,0
+Mercedes-Benz M-Class,2014,Third,115000,Diesel,Automatic,1850000,2987,258,225,0
+Audi Q5,2016,Second,95000,Diesel,Automatic,2200000,1984,249,237,0
+Maruti Suzuki Grand Vitara,2024,First,15000,Electric,Automatic,1650000,1490,114,170,1.5
+Toyota Hyryder,2023,First,22000,Electric,Automatic,1550000,1490,114,170,1.5
+Hyundai Alcazar,2022,First,35000,Diesel,Automatic,1850000,1493,113,175,0
+Kia Seltos,2024,First,12000,Petrol,Automatic,1750000,1493,113,170,0
+MG Hector Plus,2021,First,48000,Diesel,Manual,1650000,1956,167,180,0
+Tata Curvv,2025,First,8000,Electric,Automatic,1950000,0,140,160,50
+Mahindra BE.05,2026,First,150,Electric,Automatic,2250000,0,281,190,60
+Maruti Suzuki Fronx,2024,First,18000,Petrol,Automatic,1050000,998,98,170,0
+Hyundai Exter,2025,First,12000,Petrol,Manual,850000,1197,81,150,0
+Toyota Rumion,2023,First,28000,CNG,Manual,1150000,1462,101,170,0
+Honda Elevate,2024,First,14000,Petrol,Automatic,1450000,1498,119,160,0
+Skoda Kodiaq,2022,First,32000,Petrol,Automatic,3400000,1984,187,210,0
+Volkswagen Tiguan,2021,First,42000,Petrol,Automatic,2800000,1984,187,205,0
+Jeep Grand Cherokee,2023,First,18000,Petrol,Automatic,7500000,1995,268,206,0
+BYD Atto 3,2023,First,24000,Electric,Automatic,2900000,0,201,160,60.5
+Volvo C40 Recharge,2024,First,15000,Electric,Automatic,6100000,0,402,180,78
+Mini Cooper SE,2022,First,20000,Electric,Automatic,4500000,0,181,150,32.6
+Audi e-tron,2021,First,35000,Electric,Automatic,8500000,0,402,200,95
+BMW iX,2023,First,16000,Electric,Automatic,11500000,0,322,200,76.6
+Mercedes-Benz EQS,2024,First,10000,Electric,Automatic,15500000,0,516,210,107.8
+Porsche Taycan,2022,First,22000,Electric,Automatic,14500000,0,402,230,93.4
+Maruti Suzuki Invicto,2024,First,10000,Petrol,Automatic,2500000,1987,150,180,0
+Tata Safari Storme,2018,Second,80000,Diesel,Manual,800000,2179,154,165,0
+Hyundai Santro Xing,2008,Third,150000,Petrol,Manual,100000,1086,62,145,0
+Kia Carens,2024,First,15000,Diesel,Automatic,1800000,1493,113,170,0
+Mahindra TUV300 Plus,2019,Second,60000,Diesel,Manual,700000,2179,120,155,0
+Toyota Urban Cruiser Hyryder,2024,First,12000,Electric,Automatic,1600000,1490,114,170,1.5
+Honda BR-V,2018,Second,70000,Petrol,Manual,750000,1497,117,165,0
+Renault Kiger,2023,First,25000,Petrol,Automatic,950000,999,98,170,0
+Nissan Kicks,2021,First,40000,Petrol,Manual,900000,1498,104,175,0
+Skoda Rapid,2020,First,50000,Petrol,Automatic,950000,999,108,185,0
+Volkswagen Vento,2019,Second,65000,Petrol,Automatic,700000,1197,103,180,0
+Jeep Compass Trailhawk,2022,First,30000,Diesel,Automatic,2800000,1956,167,185,0
+MG Hector Plus,2022,First,35000,Diesel,Manual,1800000,1956,167,180,0
+BMW 2 Series Gran Coupe,2023,First,20000,Diesel,Automatic,4200000,1995,187,233,0
+Mercedes-Benz A-Class Limousine,2022,First,25000,Petrol,Automatic,4500000,1332,161,230,0
+Audi A3,2019,Second,55000,Diesel,Automatic,2000000,1968,141,215,0
+Volvo S90,2021,First,30000,Petrol,Automatic,5500000,1969,250,230,0
+Jaguar XE,2019,Second,45000,Diesel,Automatic,2800000,1997,177,228,0
+Lexus NX 300h,2020,First,40000,Electric,Automatic,5000000,2494,194,180,1.6
+Mini Cooper JCW,2023,First,15000,Petrol,Automatic,4800000,1998,228,246,0
+Porsche Macan S,2024,First,8000,Petrol,Automatic,9500000,2894,375,259,0
+Land Rover Range Rover Evoque,2022,First,25000,Diesel,Automatic,6500000,1997,201,213,0
+Tata Tiago EV,2023,First,20000,Electric,Automatic,1000000,0,74,120,24
+Mahindra eVerito,2019,Second,50000,Electric,Automatic,600000,0,41,86,21.2
+Hyundai Kona Electric,2021,First,35000,Electric,Automatic,2000000,0,134,155,39.2
+Kia Niro EV,2025,First,5000,Electric,Automatic,3500000,0,201,167,64.8
+MG ZS EV,2023,First,22000,Electric,Automatic,2200000,0,174,140,50.3
+Nissan Leaf,2020,First,45000,Electric,Automatic,1800000,0,147,144,40
+Renault Zoe,2021,First,38000,Electric,Automatic,1500000,0,134,140,52
+Tata Tigor EV,2024,First,12000,Electric,Automatic,1150000,0,74,120,26
+Mahindra XUV400,2025,First,10000,Electric,Automatic,1700000,0,150,150,39.4
+Citroen eC3,2024,First,15000,Electric,Automatic,1250000,0,57,107,29.2
+Peugeot e-208,2023,First,25000,Electric,Automatic,2500000,0,136,150,50
+Fiat 500e,2022,First,30000,Electric,Automatic,2800000,0,117,150,42
+Volkswagen ID.4,2024,First,18000,Electric,Automatic,5000000,0,201,160,77
+Skoda Enyaq iV,2025,First,8000,Electric,Automatic,5500000,0,201,160,77
+Audi Q4 e-tron,2023,First,22000,Electric,Automatic,6000000,0,295,180,77
+BMW i4,2024,First,15000,Electric,Automatic,10000000,0,335,190,80.7
+Mercedes-Benz EQB,2025,First,5000,Electric,Automatic,7500000,0,288,160,66.5
+Porsche Taycan Cross Turismo,2024,First,12000,Electric,Automatic,16000000,0,469,220,93.4
+Tesla Model Y,2023,First,25000,Electric,Automatic,7000000,0,384,217,75
+Rivian R1T,2024,First,18000,Electric,Automatic,8000000,0,835,180,135
+Lucid Air,2025,First,10000,Electric,Automatic,9000000,0,819,180,112
+Ford Mustang Mach-E,2022,First,35000,Electric,Automatic,6500000,0,266,180,91
+Chevrolet Bolt EUV,2023,First,28000,Electric,Automatic,3500000,0,200,150,65
+Toyota bZ4X,2024,First,15000,Electric,Automatic,4500000,0,201,160,71.4
+Subaru Solterra,2025,First,8000,Electric,Automatic,4800000,0,215,160,71.4
+Honda Prologue,2026,First,2000,Electric,Automatic,5200000,0,210,160,85
+Mazda MX-30,2023,First,30000,Electric,Automatic,3800000,0,143,140,35.5
+Hyundai Nexo,2022,First,40000,Electric,Automatic,4000000,0,161,179,1.6

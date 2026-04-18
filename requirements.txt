@@ -1,0 +1,7 @@
+# Trimmed requirements: only packages imported in the project's Python files
+# Generated 2026-04-17 — pinned to the versions currently in the project's venv
+streamlit==1.56.0
+pandas==2.3.3
+plotly==6.7.0
+fpdf==1.7.2
+
