@@ -65,7 +65,7 @@ def show_compare():
     with c_sel1:
         car1_name = st.selectbox("🟦 Select Vehicle Alpha (Blue)", car_list, index=0)
     with c_sel2:
-        car2_name = st.selectbox("🟥 Select Vehicle Beta (Red)", car_list, index=1 if len(car_list) > 1 else 0)
+        car2_name = st.selectbox("🟥 Select Vehicle Sigma (Red)", car_list, index=1 if len(car_list) > 1 else 0)
 
     if car1_name == car2_name:
         st.warning("⚠️ Please select two different vehicles for comparison.")
@@ -96,7 +96,7 @@ def show_compare():
     with col2:
         st.markdown(f"""
         <div class='battle-card-b'>
-            <h4 style='color:#ccc; letter-spacing:2px;'>VEHICLE BETA</h4>
+            <h4 style='color:#ccc; letter-spacing:2px;'>VEHICLE SIGMA</h4>
             <h2 style='color:#ff4b4b; text-shadow: 0 0 10px #ff4b4b; font-size: 30px;'>{car2_name}</h2>
             <h1 style='color:white; margin:10px 0;'>₹ {c2_data.get('Price_INR', 0)/100000:.1f} L</h1>
             <p style='color:#ff4b4b; font-weight:bold;'>{c2_data.get('Fuel_Type', 'N/A')} | {c2_data.get('Transmission', 'N/A')}</p>
