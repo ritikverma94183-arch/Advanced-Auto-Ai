@@ -282,7 +282,7 @@ def main():
                     st.rerun()
             
             st.markdown("<br><br><br><br><br>", unsafe_allow_html=True)
-            if st.button("🛑 SEVER CONNECTION", type="primary", use_container_width=True):
+            if st.button("🛑 Log Out", type="primary", use_container_width=True):
                 st.session_state["logged_in"] = False
                 st.session_state["current_page"] = "Central Hub"
                 st.rerun()
