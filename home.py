@@ -2,73 +2,153 @@ import streamlit as st
 import db
 
 def show_home():
-    # Dual Banner Section
-    dual_banner_html = (
-        "<div style='display: flex; position: relative; border-radius: 15px; overflow: hidden; margin-bottom: 30px; border: 1px solid #444; height: 350px;'>"
-        "<div style='flex: 1; background-image: url(\"https://media.istockphoto.com/id/1208725980/photo/toyota-fortuner.jpg?s=612x612&w=0&k=20&c=wrf44J-UUcPKTCXCz0ixtWuS05yzgRGRgWHFqZZcfr0=\"); background-size: cover; background-position: center;'>"
-        "<div style='width: 100%; height: 100%; background: rgba(0,0,0,0.6);'></div></div>"
-        "<div style='flex: 1; background-image: url(\"https://www.hdcarwallpapers.com/walls/lamborghini_huracan_sto_lamborghini_urus_4k_8k-HD.jpg\"); background-size: cover; background-position: center;'>"
-        "<div style='width: 100%; height: 100%; background: rgba(0,0,0,0.6);'></div></div>"
-        "<div class='float-anim' style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 10; width: 90%; pointer-events: none;'>"
-        "<h1 class='glow-title' style='color: #00ffcc; font-size: 60px; margin-bottom: 5px; font-weight: bold; text-shadow: 3px 3px 10px black;'>Advanced Auto AI</h1>"
-        "<p style='color: #ffffff; font-size: 24px; text-shadow: 2px 2px 8px black;'>The Ultimate Dealership & Valuation Command Center</p>"
-        "</div></div>"
-    )
-    st.markdown(dual_banner_html, unsafe_allow_html=True)
-    
-    # Fetch Dealership Data
-    df = db.get_all_cars()
-    total_cars = len(df) if not df.empty else 0
-    total_value = df['Price_INR'].sum() if not df.empty and 'Price_INR' in df.columns else 0
-    
-    st.markdown("### 📊 Real-Time Dealership Telemetry")
-    
-    c1, c2, c3 = st.columns(3)
-    c_style = "padding:20px; border-radius:10px; background-color:#1e1e2e; text-align:center; border: 1px solid #333;"
-    
-    c1.markdown(f"<div class='hover-card' style='{c_style}'><h3 style='color:#888; margin:0;'>Active Inventory</h3><h1 style='color:#00ffcc; margin:10px 0;'>{total_cars}</h1><p style='color:#aaa; margin:0;'>Vehicles Loaded</p></div>", unsafe_allow_html=True)
-    
-    val_cr = total_value / 10000000 if total_cars > 0 else 0
-    c2.markdown(f"<div class='hover-card' style='{c_style}'><h3 style='color:#888; margin:0;'>Portfolio Value</h3><h1 style='color:#ff4b4b; margin:10px 0;'>₹ {val_cr:,.2f} Cr</h1><p style='color:#aaa; margin:0;'>Dealership Asset</p></div>", unsafe_allow_html=True)
-    
-    avg_price_l = (total_value / total_cars / 100000) if total_cars > 0 else 0
-    c3.markdown(f"<div class='hover-card' style='{c_style}'><h3 style='color:#888; margin:0;'>Inventory Avg</h3><h1 style='color:#ffc107; margin:10px 0;'>₹ {avg_price_l:,.1f} L</h1><p style='color:#aaa; margin:0;'>Average Unit Price</p></div>", unsafe_allow_html=True)
-    
-    st.markdown("---")
-    st.markdown("### 🚙 Showroom Fleet Categories")
-    pic_col1, pic_col2 = st.columns(2)
-    
-    with pic_col1:
-        indian_card_html = (
-            "<div class='hover-card' style='background-color:#1e1e2e; padding:15px; border-radius:12px; border:1px solid #3b3b4f; text-align:center; box-shadow: 0 4px 10px rgba(0,0,0,0.5);'>"
-            "<h3 style='color:#ffffff; margin-bottom:10px;'>Popular Indian Fleet 🇮🇳</h3>"
-            "<div class='img-container'>"
-            "<img class='img-zoom' src='https://w0.peakpx.com/wallpaper/346/609/HD-wallpaper-in-pics-tata-harrier-dark-edition-launched-check-out-how-the-all-black-suv-looks-like.jpg' style='width:100%; height:250px; object-fit:cover;'>"
-            "</div>"
-            "<p style='color:#a0a0b0; font-size:14px;'>Top performing SUVs like TATA Harrier Dark, Toyota Fortuner, and Mahindra Thar.</p>"
-            "</div>"
-        )
-        st.markdown(indian_card_html, unsafe_allow_html=True)
-        
-    with pic_col2:
-        luxury_card_html = (
-            "<div class='hover-card' style='background-color:#1e1e2e; padding:15px; border-radius:12px; border:1px solid #3b3b4f; text-align:center; box-shadow: 0 4px 10px rgba(0,0,0,0.5);'>"
-            "<h3 style='color:#ffffff; margin-bottom:10px;'>Dream Luxury Segment 👑</h3>"
-            "<div class='img-container'>"
-            "<img class='img-zoom' src='https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?q=80&w=800&auto=format&fit=crop' style='width:100%; height:250px; object-fit:cover;'>"
-            "</div>"
-            "<p style='color:#a0a0b0; font-size:14px;'>Premium collections including Lamborghini, Porsche, BMW, and Mercedes-Benz.</p>"
-            "</div>"
-        )
-        st.markdown(luxury_card_html, unsafe_allow_html=True)
-        
-    st.markdown("---")
-    st.markdown("### ⚡ Quick System Overview")
-    st.info("👈 Use the **Command Center** menu on the left to navigate.")
-    
+    # 🔥 ULTRA-ADVANCED CSS: Hacker Grids, Scanlines, 3D Tilt & Pulsing Glows
+    advanced_css = """
+    <style>
+    /* Live News Ticker */
+    .ticker-wrap {
+        width: 100%; overflow: hidden; background-color: rgba(10,10,15,0.9);
+        border-top: 2px solid #00ffcc; border-bottom: 2px solid #00ffcc;
+        padding: 10px 0; margin-bottom: 30px; border-radius: 5px;
+        box-shadow: 0 0 20px rgba(0,255,204,0.3);
+    }
+    .ticker {
+        display: inline-block; white-space: nowrap; padding-right: 100%;
+        animation: ticker 25s linear infinite;
+    }
+    .ticker-item {
+        display: inline-block; padding: 0 2rem; font-size: 16px; color: #00ffcc; font-weight: 900; letter-spacing: 1px;
+        text-shadow: 0 0 8px #00ffcc;
+    }
+    @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
+    /* 3D Pulsing Showroom Glow Cards */
+    .showroom-card {
+        background: rgba(20, 20, 30, 0.6);
+        backdrop-filter: blur(10px); 
+        border: 1px solid rgba(0, 255, 204, 0.4); 
+        border-radius: 15px; padding: 25px; text-align: center;
+        transition: all 0.5s ease;
+        animation: pulse-border 3s infinite alternate;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    }
+    @keyframes pulse-border {
+        0% { border-color: rgba(0,255,204,0.3); box-shadow: 0 0 10px rgba(0,255,204,0.1); }
+        100% { border-color: rgba(0,255,204,1); box-shadow: 0 0 25px rgba(0,255,204,0.5); }
+    }
+    .showroom-card:hover {
+        transform: translateY(-15px) perspective(1000px) rotateX(5deg);
+        background: rgba(30, 30, 45, 0.8);
+        border-color: #fff; box-shadow: 0 20px 50px rgba(0,255,204,0.6);
+    }
+
+    /* 🔥 TACTICAL CYBER IMAGE CARDS */
+    .cyber-image-card {
+        position: relative; overflow: hidden; border-radius: 15px;
+        border: 2px solid #00ffcc; box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+        height: 280px; margin-top: 20px; background-color: #050505;
+    }
+    .cyber-image-bg {
+        position: absolute; top: 0; left: 0;
+        width: 100%; height: 100%; object-fit: cover; display: block;
+        transition: 0.5s ease-in-out; filter: brightness(0.6); z-index: 0;
+    }
+    .cyber-image-card:hover { box-shadow: 0 0 35px rgba(0, 255, 204, 0.9); }
+    .cyber-image-card:hover .cyber-image-bg {
+        transform: scale(1.15);
+        filter: brightness(0.4) sepia(1) hue-rotate(180deg) saturate(4);
+    }
+    .cyber-overlay {
+        position: absolute; bottom: 15px; left: 15px; background: rgba(0,0,0,0.9);
+        padding: 12px 25px; border-left: 5px solid #00ffcc; backdrop-filter: blur(8px);
+        z-index: 1; transition: 0.3s;
+    }
+    .cyber-image-card:hover .cyber-overlay {
+        border-left: 5px solid #ff4b4b;
+        transform: translateX(10px); 
+    }
+
+    /* Sci-Fi Scanline Animation for Banner */
+    .scanline {
+        position: absolute; top: 0; left: 0; width: 100%; height: 15px;
+        background: rgba(0, 255, 204, 0.6); opacity: 0.7;
+        box-shadow: 0 0 25px rgba(0, 255, 204, 1);
+        animation: scan 3s linear infinite; z-index: 2; pointer-events: none;
+    }
+    @keyframes scan {
+        0% { top: -20px; }
+        100% { top: 100%; }
+    }
+    </style>
+    """
+    st.markdown(advanced_css, unsafe_allow_html=True)
+
+    # 🚨 SCROLLING NEWS TICKER
     st.markdown("""
-    * **🔮 AI Price Predictions:** Get market-accurate, real-time valuations & professional PDF reports.
-    * **⚔️ Compare Vehicles:** Head-to-head advanced performance battle (Winner/Loser trophies 🏆).
-    * **🗄️ Database (Virtual Showroom):** Style Cards view with Engine Specs & Table Data manager.
-    * **🛰️ Live Dashboard:** Visual analytics and graphs of your dealership data.
-    """)
+    <div class="ticker-wrap" role="region" aria-label="Live updates">
+      <div class="ticker" aria-live="polite">
+        <span class="ticker-item">🔴 LIVE: Neural Network connecting to global dealership databases...</span>
+        <span class="ticker-item">⚡ EV Fleet integration 100% successful. Battery metrics online.</span>
+        <span class="ticker-item">🏆 HIGH DEMAND: Luxury SUVs peaking in Metro Regions.</span>
+        <span class="ticker-item">📉 MARKET UPDATE: Real-time telemetry systems active and secure.</span>
+      </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # 🖼️ 3D VIRTUAL SHOWROOM BANNER
+    banner_html = """
+    <div style="position: relative; border-radius: 20px; overflow: hidden; margin-bottom: 40px; border: 2px solid #00ffcc; height: 380px; box-shadow: 0 0 30px rgba(0,255,204,0.4); background-color: #000;">
+        <div class="scanline" aria-hidden="true"></div>
+        <img alt="Virtual showroom" src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1920&q=80" style="position: absolute; top:0; left:0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35); z-index: 0;" />
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; z-index: 3; pointer-events: none;">
+            <h1 style="color: #00ffcc; font-size: 75px; margin: 0; text-shadow: 3px 3px 15px black, 0 0 40px #00ffcc; font-weight:900; letter-spacing: 4px;">VIRTUAL SHOWROOM</h1>
+            <p style="color: #ffffff; font-size: 26px; text-shadow: 2px 2px 10px black; font-weight:900; letter-spacing: 4px; background: rgba(0,0,0,0.6); display: inline-block; padding: 8px 25px; border-radius: 8px; border: 1px solid #00ffcc;">SYSTEM SECURE & ONLINE</p>
+        </div>
+    </div>
+    """
+    st.markdown(banner_html, unsafe_allow_html=True)
+
+    # DATABASE CALCULATION
+    df = db.get_all_cars()
+    total_cars = len(df) if df is not None and not df.empty else 0
+    total_value = df['Price_INR'].sum() if df is not None and not df.empty and 'Price_INR' in df.columns else 0
+
+    st.markdown("<h3 style='color:white; text-shadow: 2px 2px 5px black; margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 10px;'>📊 Real-Time Telemetry Hub</h3>", unsafe_allow_html=True)
+
+    c1, c2, c3 = st.columns(3)
+    val_cr = total_value / 10000000 if total_cars > 0 else 0
+    avg_price_l = (total_value / total_cars / 100000) if total_cars > 0 else 0
+
+    # KPI CARDS
+    c1.markdown(f"<div class='showroom-card'><h4 style='color:#ccc; letter-spacing: 1px; font-size:16px;'>TOTAL INVENTORY</h4><h1 style='color:#00ffcc; font-size: 50px; margin:0; text-shadow: 0 0 15px #00ffcc;'>{total_cars} <span style='font-size:20px; color:#fff;'>Units</span></h1></div>", unsafe_allow_html=True)
+    c2.markdown(f"<div class='showroom-card'><h4 style='color:#ccc; letter-spacing: 1px; font-size:16px;'>DEALERSHIP NET WORTH</h4><h1 style='color:#ff4b4b; font-size: 50px; margin:0; text-shadow: 0 0 15px #ff4b4b;'>₹ {val_cr:,.2f} <span style='font-size:20px; color:#fff;'>Cr</span></h1></div>", unsafe_allow_html=True)
+    c3.markdown(f"<div class='showroom-card'><h4 style='color:#ccc; letter-spacing: 1px; font-size:16px;'>AVG. VEHICLE VALUE</h4><h1 style='color:#ffc107; font-size: 50px; margin:0; text-shadow: 0 0 15px #ffc107;'>₹ {avg_price_l:,.1f} <span style='font-size:20px; color:#fff;'>L</span></h1></div>", unsafe_allow_html=True)
+
+    # 🔥 ADVANCED TECHNOLOGY CARDS SECTION (URL FIX APPLIED HERE)
+    st.markdown("<br><h3 style='color:white; text-shadow: 2px 2px 5px black; margin-bottom: 10px; margin-top: 15px; border-bottom: 1px solid #444; padding-bottom: 10px;'>🛰️ Advanced Fleet Modules</h3>", unsafe_allow_html=True)
+
+    col_img1, col_img2 = st.columns(2)
+
+    with col_img1:
+        st.markdown("""
+        <div class="cyber-image-card">
+            <img class="cyber-image-bg" src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=1920&q=80" />
+            <div class="cyber-overlay">
+                <h3 style="color:#00ffcc; margin:0; font-size: 22px; font-weight:900; text-shadow: 2px 2px 5px black;">AI Autonomous Drive</h3>
+                <p style="color:#ddd; margin:0; font-size:14px; font-weight:bold; text-shadow: 1px 1px 3px black; margin-top:5px;">Neural Network Integration Ready</p>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col_img2:
+        st.markdown("""
+        <div class="cyber-image-card">
+            <img class="cyber-image-bg" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80" />
+            <div class="cyber-overlay">
+                <h3 style="color:#00ffcc; margin:0; font-size: 22px; font-weight:900; text-shadow: 2px 2px 5px black;">Cyber-Performance Metrics</h3>
+                <p style="color:#ddd; margin:0; font-size:14px; font-weight:bold; text-shadow: 1px 1px 3px black; margin-top:5px;">Real-time Telemetry & Tracking</p>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("<br><hr style='border:1px solid #00ffcc; box-shadow: 0 0 10px #00ffcc;'><h3 style='color:#00ffcc; text-shadow: 0 0 15px #00ffcc; text-align:center; font-weight: 900; letter-spacing: 2px;'>⚡ ALL SYSTEMS NOMINAL. STANDING BY. ⚡</h3>", unsafe_allow_html=True)
