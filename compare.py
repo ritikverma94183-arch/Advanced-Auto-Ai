@@ -2,169 +2,174 @@ import streamlit as st
 import db
 import pandas as pd
 import plotly.graph_objects as go
-from ml_engine import train_and_predict
 
 def show_compare():
-    # 🔥 ADVANCED COMBAT ANIMATIONS CSS
-    st.markdown("""
+    # 🔥 ULTRA-ADVANCED CSS: Battle Arena, Neon Glows & Glassmorphism
+    compare_css = """
     <style>
-    /* 1. Fade & Slide in for Results */
-    .fade-in-up {
-        animation: fadeInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .neon-title {
+        color: #00ffcc; font-size: 45px; font-weight: 900; text-align: center;
+        text-shadow: 2px 2px 15px black, 0 0 25px #00ffcc; margin-top: 10px;
     }
-    @keyframes fadeInUp {
-        0% { opacity: 0; transform: translateY(30px); }
-        100% { opacity: 1; transform: translateY(0); }
-    }
-
-    /* 2. 3D Hover Effect for Spec Cards */
-    .hover-combat-card {
-        padding: 15px; 
-        background: #1e1e1e; 
-        border-radius: 12px; 
-        border: 1px solid #333;
-        text-align: center;
-        transition: all 0.4s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-    .hover-combat-card:hover {
-        transform: translateY(-10px) scale(1.05);
-        border-color: #00ffcc !important;
-        box-shadow: 0 15px 30px rgba(0, 255, 204, 0.3) !important;
-        z-index: 10;
-    }
-
-    /* 3. Pulsing VS Text Animation */
-    .pulse-vs {
-        font-size: 24px;
-        font-weight: bold;
-        color: #ffc107;
-        text-align: center;
-        animation: pulseVS 1.5s infinite alternate;
-    }
-    @keyframes pulseVS {
-        0% { transform: scale(1); text-shadow: 0 0 5px #ffc107; }
-        100% { transform: scale(1.3); text-shadow: 0 0 20px #ffc107, 0 0 30px #ff4b4b; }
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-    st.title("⚔️ Advanced Head-to-Head Comparison")
-    st.write("Compare vehicle specs, performance, and real-time market depreciation.")
-
-    # Database fetch karna safely
-    df_cars = db.get_all_cars()
-    if not df_cars.empty:
-        car_list = sorted(df_cars['Car_Name'].unique().tolist())
-    else:
-        car_list = ["Maruti Suzuki Swift", "Toyota Fortuner", "Lamborghini Urus"]
-
-    col1, col2 = st.columns(2)
     
+    /* Battle Cards */
+    .battle-card-a {
+        background: rgba(10, 20, 30, 0.7); backdrop-filter: blur(10px);
+        border: 2px solid #00ffcc; border-radius: 15px; padding: 20px; text-align: center;
+        box-shadow: 0 0 25px rgba(0, 255, 204, 0.3); transition: 0.4s;
+    }
+    .battle-card-a:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 255, 204, 0.6); }
+
+    .battle-card-b {
+        background: rgba(30, 10, 15, 0.7); backdrop-filter: blur(10px);
+        border: 2px solid #ff4b4b; border-radius: 15px; padding: 20px; text-align: center;
+        box-shadow: 0 0 25px rgba(255, 75, 75, 0.3); transition: 0.4s;
+    }
+    .battle-card-b:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(255, 75, 75, 0.6); }
+
+    /* Animated VS Logo */
+    .vs-logo {
+        font-size: 60px; font-weight: 900; color: #fff; text-align: center;
+        text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+        animation: pulse-vs 1.5s infinite alternate; margin-top: 50px;
+    }
+    @keyframes pulse-vs {
+        0% { transform: scale(1); text-shadow: 0 0 10px #ff00ff; }
+        100% { transform: scale(1.2); text-shadow: 0 0 30px #ff00ff, 0 0 60px #ff00ff; }
+    }
+
+    /* Spec Highlight Boxes */
+    .spec-box {
+        background: rgba(0,0,0,0.6); border-radius: 8px; padding: 10px;
+        border-left: 3px solid #555; margin-bottom: 10px;
+    }
+    .win-a { border-left-color: #00ffcc; box-shadow: inset 20px 0 20px -20px rgba(0,255,204,0.5); }
+    .win-b { border-left-color: #ff4b4b; box-shadow: inset 20px 0 20px -20px rgba(255,75,75,0.5); }
+    </style>
+    """
+    st.markdown(compare_css, unsafe_allow_html=True)
+
+    st.markdown("<h1 class='neon-title'>⚔️ Tactical Head-to-Head</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #fff; font-size: 18px; font-weight: 800; text-align: center; text-shadow: 2px 2px 5px black; letter-spacing: 2px;'>SELECT TARGETS FOR COMBAT ANALYSIS</p><br>", unsafe_allow_html=True)
+
+    df = db.get_all_cars()
+    
+    if df.empty or len(df) < 2:
+        st.warning("⚠️ Need at least 2 vehicles in the Database to initiate combat analysis.")
+        return
+
+    car_list = sorted(df['Car_Name'].unique().tolist())
+
+    # Selection Row
+    c_sel1, c_sel2 = st.columns(2)
+    with c_sel1:
+        car1_name = st.selectbox("🟦 Select Vehicle Alpha (Blue)", car_list, index=0)
+    with c_sel2:
+        car2_name = st.selectbox("🟥 Select Vehicle Beta (Red)", car_list, index=1 if len(car_list) > 1 else 0)
+
+    if car1_name == car2_name:
+        st.warning("⚠️ Please select two different vehicles for comparison.")
+        return
+
+    # Fetch Data
+    c1_data = df[df['Car_Name'] == car1_name].iloc[0]
+    c2_data = df[df['Car_Name'] == car2_name].iloc[0]
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # --- BATTLE ARENA (CAR A vs CAR B) ---
+    col1, col_vs, col2 = st.columns([1, 0.3, 1])
+
     with col1:
-        st.markdown("### 🚙 Vehicle 1")
-        car1 = st.selectbox("Select First Car", car_list, key="car1")
-        
+        st.markdown(f"""
+        <div class='battle-card-a'>
+            <h4 style='color:#ccc; letter-spacing:2px;'>VEHICLE ALPHA</h4>
+            <h2 style='color:#00ffcc; text-shadow: 0 0 10px #00ffcc; font-size: 30px;'>{car1_name}</h2>
+            <h1 style='color:white; margin:10px 0;'>₹ {c1_data.get('Price_INR', 0)/100000:.1f} L</h1>
+            <p style='color:#00ffcc; font-weight:bold;'>{c1_data.get('Fuel_Type', 'N/A')} | {c1_data.get('Transmission', 'N/A')}</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col_vs:
+        st.markdown("<div class='vs-logo'>VS</div>", unsafe_allow_html=True)
+
     with col2:
-        st.markdown("### 🏎️ Vehicle 2")
-        car2 = st.selectbox("Select Second Car", car_list, key="car2", index=min(1, len(car_list)-1))
+        st.markdown(f"""
+        <div class='battle-card-b'>
+            <h4 style='color:#ccc; letter-spacing:2px;'>VEHICLE BETA</h4>
+            <h2 style='color:#ff4b4b; text-shadow: 0 0 10px #ff4b4b; font-size: 30px;'>{car2_name}</h2>
+            <h1 style='color:white; margin:10px 0;'>₹ {c2_data.get('Price_INR', 0)/100000:.1f} L</h1>
+            <p style='color:#ff4b4b; font-weight:bold;'>{c2_data.get('Fuel_Type', 'N/A')} | {c2_data.get('Transmission', 'N/A')}</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-    if st.button("Start Advanced Comparison 🚀", type="primary", use_container_width=True):
-        st.markdown("---")
+    st.markdown("<br><hr style='border: 1px solid #333;'>", unsafe_allow_html=True)
+
+    # --- ADVANCED RADAR CHART (COMBAT SCAN) ---
+    st.markdown("<h3 style='color: white; text-align: center; text-shadow: 0 0 10px #fff;'>🕸️ Combat Radar Scan</h3>", unsafe_allow_html=True)
+    
+    categories = ['Power (BHP)', 'Top Speed', 'Engine (CC/10)', 'Value (Lakhs)', 'Age Factor']
+    
+    # Safe data extraction
+    def safe_get(data, col, default=0): return float(data.get(col, default)) if pd.notnull(data.get(col)) else default
+    
+    c1_stats = [
+        safe_get(c1_data, 'Power_BHP', 100), safe_get(c1_data, 'Top_Speed_kmph', 150),
+        safe_get(c1_data, 'Engine_Capacity_cc', 1000) / 10, safe_get(c1_data, 'Price_INR', 500000) / 100000,
+        (2026 - safe_get(c1_data, 'Model_Year', 2020)) * 5
+    ]
+    
+    c2_stats = [
+        safe_get(c2_data, 'Power_BHP', 100), safe_get(c2_data, 'Top_Speed_kmph', 150),
+        safe_get(c2_data, 'Engine_Capacity_cc', 1000) / 10, safe_get(c2_data, 'Price_INR', 500000) / 100000,
+        (2026 - safe_get(c2_data, 'Model_Year', 2020)) * 5
+    ]
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatterpolar(
+        r=c1_stats, theta=categories, fill='toself', name='Alpha (Blue)',
+        line=dict(color='#00ffcc', width=3), fillcolor='rgba(0, 255, 204, 0.4)'
+    ))
+    fig.add_trace(go.Scatterpolar(
+        r=c2_stats, theta=categories, fill='toself', name='Beta (Red)',
+        line=dict(color='#ff4b4b', width=3), fillcolor='rgba(255, 75, 75, 0.4)'
+    ))
+
+    fig.update_layout(
+        polar=dict(
+            radialaxis=dict(visible=True, gridcolor='rgba(255,255,255,0.2)'),
+            angularaxis=dict(gridcolor='rgba(255,255,255,0.2)'),
+            bgcolor='rgba(0,0,0,0)'
+        ),
+        paper_bgcolor='rgba(0,0,0,0)', font=dict(color='#fff', size=14),
+        margin=dict(t=40, b=40, l=40, r=40),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+    # --- SPEC-BY-SPEC COMPARISON BARS ---
+    st.markdown("<h3 style='color: white; text-align: center; text-shadow: 0 0 10px #fff;'>⚙️ Engine Core Telemetry</h3><br>", unsafe_allow_html=True)
+
+    def compare_row(label, val1, val2, unit="", lower_is_better=False):
+        try: v1, v2 = float(val1), float(val2)
+        except: v1, v2 = 0, 0
         
-        # 🔥 SMART FETCHING LOGIC (Bugs Fixed)
-        def get_car_specs(c_name):
-            cc, bhp, spd = 1500, 100, 180 # Defaults
-            fuel, trans = "Petrol", "Manual"
-            if not df_cars.empty:
-                c_df = df_cars[df_cars['Car_Name'] == c_name]
-                if not c_df.empty:
-                    if 'Engine_Capacity_cc' in c_df.columns: cc = int(c_df['Engine_Capacity_cc'].iloc[0])
-                    if 'Power_BHP' in c_df.columns: bhp = int(c_df['Power_BHP'].iloc[0])
-                    if 'Top_Speed_kmph' in c_df.columns: spd = int(c_df['Top_Speed_kmph'].iloc[0])
-                    if 'Fuel_Type' in c_df.columns: fuel = str(c_df['Fuel_Type'].iloc[0])
-                    if 'Transmission' in c_df.columns: trans = str(c_df['Transmission'].iloc[0])
-                    if 'Battery_Capacity_kWh' in c_df.columns: battery = int(c_df['Battery_Capacity_kWh'].iloc[0])
-            return cc, bhp, spd, fuel, trans, battery
+        # Determine winner
+        if v1 == v2: win_class1 = win_class2 = "spec-box"
+        elif (v1 > v2 and not lower_is_better) or (v1 < v2 and lower_is_better): 
+            win_class1, win_class2 = "spec-box win-a", "spec-box"
+        else: 
+            win_class1, win_class2 = "spec-box", "spec-box win-b"
 
-        # Dono gaadiyon ka exact data nikalna
-        cc1, bhp1, spd1, fuel1, trans1, battery1 = get_car_specs(car1)
-        cc2, bhp2, spd2, fuel2, trans2, battery2 = get_car_specs(car2)
+        c_l, c_m, c_r = st.columns([2, 1, 2])
+        c_l.markdown(f"<div class='{win_class1}'><h4 style='color:#00ffcc; margin:0; text-align:right;'>{val1} {unit}</h4></div>", unsafe_allow_html=True)
+        c_m.markdown(f"<div style='text-align:center; color:#ccc; padding-top:10px; font-weight:bold;'>{label}</div>", unsafe_allow_html=True)
+        c_r.markdown(f"<div class='{win_class2}'><h4 style='color:#ff4b4b; margin:0; text-align:left;'>{val2} {unit}</h4></div>", unsafe_allow_html=True)
 
-        # Comparison ke liye Standard Parameters (For Fair Fight)
-        year, km, owner = 2024, 20000, "First"
+    compare_row("Power", c1_data.get('Power_BHP', 0), c2_data.get('Power_BHP', 0), "BHP")
+    compare_row("Engine", c1_data.get('Engine_Capacity_cc', 0), c2_data.get('Engine_Capacity_cc', 0), "CC")
+    compare_row("Top Speed", c1_data.get('Top_Speed_kmph', 0), c2_data.get('Top_Speed_kmph', 0), "km/h")
+    compare_row("Model Year", c1_data.get('Model_Year', 0), c2_data.get('Model_Year', 0), "", lower_is_better=False)
+    compare_row("Kilometers", c1_data.get('Kms_Driven', 0), c2_data.get('Kms_Driven', 0), "km", lower_is_better=True)
 
-        # AI se Market Value nikalna
-        price1 = train_and_predict(car1, year, km, fuel1, owner, trans1, cc1, bhp1, spd1)
-        price2 = train_and_predict(car2, year, km, fuel2, owner, trans2, cc2, bhp2, spd2)
-
-        # 🔥 ANIMATED CONTAINER START
-        st.markdown("<div class='fade-in-up'>", unsafe_allow_html=True)
-
-        # --- 1. PRICE COMPARISON UI ---
-        st.markdown("### 💰 Market Value (Assuming 2024 Model, 20k KM)")
-        c1, c_vs, c2 = st.columns([2, 1, 2])
-        with c1:
-            st.metric(f"Current Value: {car1}", f"₹{price1:,.0f}")
-        with c_vs:
-            st.markdown("<br><div class='pulse-vs'>VS</div>", unsafe_allow_html=True)
-        with c2:
-            st.metric(f"Current Value: {car2}", f"₹{price2:,.0f}")
-
-        # --- 2. PERFORMANCE BATTLE UI (With Trophies & Hover Animation) ---
-        st.markdown("### ⚡ Specifications Battle")
-        
-        def colorize_winner(v1, v2, unit):
-            win, lose, tie = "#00ffcc", "#ff4b4b", "#ffffff"
-            if v1 > v2: return f"<span style='color:{win}; font-weight:bold;'>{v1} {unit} 🏆</span>", f"<span style='color:{lose}'>{v2} {unit}</span>"
-            elif v2 > v1: return f"<span style='color:{lose}'>{v1} {unit}</span>", f"<span style='color:{win}; font-weight:bold;'>{v2} {unit} 🏆</span>"
-            else: return f"<span style='color:{tie}'>{v1} {unit} 🤝</span>", f"<span style='color:{tie}'>{v2} {unit} 🤝</span>"
-
-        cc1_str, cc2_str = colorize_winner(cc1, cc2, "cc")
-        bhp1_str, bhp2_str = colorize_winner(bhp1, bhp2, "BHP")
-        spd1_str, spd2_str = colorize_winner(spd1, spd2, "km/h")
-        battery1_str, battery2_str = colorize_winner(battery1, battery2, "kWh")
-
-        sc1, sc2, sc3, sc4 = st.columns(4)
-
-        # Applied .hover-combat-card class to the boxes
-        sc1.markdown(f"<div class='hover-combat-card'><b style='color:#ccc;'>Engine Capacity</b><br><br><span style='font-size:14px;'>{car1}</span><br>{cc1_str}<br><br><span style='font-size:14px;'>{car2}</span><br>{cc2_str}</div>", unsafe_allow_html=True)
-        sc2.markdown(f"<div class='hover-combat-card'><b style='color:#ccc;'>Horsepower</b><br><br><span style='font-size:14px;'>{car1}</span><br>{bhp1_str}<br><br><span style='font-size:14px;'>{car2}</span><br>{bhp2_str}</div>", unsafe_allow_html=True)
-        sc3.markdown(f"<div class='hover-combat-card'><b style='color:#ccc;'>Top Speed</b><br><br><span style='font-size:14px;'>{car1}</span><br>{spd1_str}<br><br><span style='font-size:14px;'>{car2}</span><br>{spd2_str}</div>", unsafe_allow_html=True)
-        sc4.markdown(f"<div class='hover-combat-card'><b style='color:#ccc;'>Battery Capacity</b><br><br><span style='font-size:14px;'>{car1}</span><br>{battery1_str}<br><br><span style='font-size:14px;'>{car2}</span><br>{battery2_str}</div>", unsafe_allow_html=True)
-
-        # --- 3. ADVANCED RADAR CHART ---
-        st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown("### 📊 Performance Radar")
-        
-        max_cc, max_bhp, max_spd = max(cc1, cc2, 1), max(bhp1, bhp2, 1), max(spd1, spd2, 1)
-        max_price = max(price1, price2, 1)
-
-        fig_radar = go.Figure()
-        fig_radar.add_trace(go.Scatterpolar(
-            r=[cc1/max_cc, bhp1/max_bhp, spd1/max_spd, price1/max_price, battery1/200],
-            theta=['Engine (CC)', 'Power (BHP)', 'Top Speed', 'Resale Value', 'Battery Capacity (kWh)'],
-            fill='toself', name=car1, line_color='#00ffcc'
-        ))
-        fig_radar.add_trace(go.Scatterpolar(
-            r=[cc2/max_cc, bhp2/max_bhp, spd2/max_spd, price2/max_price, battery2/200],
-            theta=['Engine (CC)', 'Power (BHP)', 'Top Speed', 'Resale Value', 'Battery Capacity (kWh)'],
-            fill='toself', name=car2, line_color='#ff4b4b'
-        ))
-        fig_radar.update_layout(polar=dict(radialaxis=dict(visible=False)), template="plotly_dark", height=450)
-        st.plotly_chart(fig_radar, use_container_width=True)
-
-        # --- 4. DEPRECIATION GRAPH ---
-        st.markdown("### 📉 10-Year Depreciation Fight")
-        years = list(range(2015, 2027))
-        p1_list = [train_and_predict(car1, y, km, fuel1, owner, trans1, cc1, bhp1, spd1, battery1) for y in years]
-        p2_list = [train_and_predict(car2, y, km, fuel2, owner, trans2, cc2, bhp2, spd2, battery2) for y in years]
-
-        fig_line = go.Figure()
-        fig_line.add_trace(go.Scatter(x=years, y=p1_list, mode='lines+markers', name=car1, line=dict(color='#00ffcc', width=3)))
-        fig_line.add_trace(go.Scatter(x=years, y=p2_list, mode='lines+markers', name=car2, line=dict(color='#ff4b4b', width=3)))
-        fig_line.update_layout(template="plotly_dark", height=400, hovermode="x unified", xaxis_title="Manufacturing Year", yaxis_title="Market Value (₹)")
-        st.plotly_chart(fig_line, use_container_width=True)
-
-        # 🔥 ANIMATED CONTAINER END
-        st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("<br><p style='text-align:center; color:#555;'>* Green/Red highlights indicate the superior specification.</p>", unsafe_allow_html=True)
