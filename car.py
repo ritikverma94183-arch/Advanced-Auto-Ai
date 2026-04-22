@@ -129,7 +129,7 @@ def inject_animations():
     # 🔥 SEAMLESS PREMIUM WALLPAPER
     full_bg_html = """
     <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -9999; background: #000;">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=80" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.20);" />
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=80" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(1.20);" />
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.85));"></div>
     </div>
     """
@@ -474,7 +474,7 @@ def main():
                     st.rerun()
             
             st.markdown("<br><br>", unsafe_allow_html=True)
-            if st.button("🛑 SEVER CONNECTION", type="primary", use_container_width=True):
+            if st.button("🛑 Log Out", type="primary", use_container_width=True):
                 st.session_state["logged_in"] = False
                 st.session_state["current_page"] = "Central Hub"
                 if "toast_shown" in st.session_state: del st.session_state["toast_shown"]
